@@ -7,13 +7,26 @@ class BaseModel:
     """
     This defines all common attributes or methods for other classes
     """
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """
         Base Model Instructor
         """
-        self.id = str(uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
+        # self.id = str(uuid4())
+        # self.created_at = datetime.now()
+        # self.updated_at = datetime.now()
+
+	if kwargs:
+		for key, value in kwargs.items():
+			if key in ["created_at", "updated_at"]:
+				setattr(self, key, value.fromisoformat())
+			elif key is not "__class__":
+				setattr(self, key, value)
+	else:
+		self.id = str(uuid4())
+		self.created_at = datetime.now()
+		self.updated_at = datetime.now()
+
+	# dict = {class: 12, updated_at: 1, created_at: 4, name: "Pool", number: 12238}
 
     def __str__(self):
         """
