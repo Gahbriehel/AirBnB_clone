@@ -18,7 +18,7 @@ class BaseModel:
         if kwargs:
             for key, value in kwargs.items():
                 if key in ["created_at", "updated_at"]:
-                    setattr(self, key, value.fromisoformat())
+                    setattr(self, key, datetime.fromisoformat(value))
                 elif key != "__class__":
                     setattr(self, key, value)
         else:
