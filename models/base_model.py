@@ -11,7 +11,7 @@ class BaseModel:
         """
         Base Model Instructor
         """
-        self.id = uuid4()
+        self.id = str(uuid4())
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
 
@@ -32,5 +32,12 @@ class BaseModel:
         """
         Returns a dictionary containing all keys/values of __dict__ of the instance
         """
-        obj_dict = self.__dict__
+        obj_dict = self.__dict__.copy()
+        obj_dict['__class__'] = self.__class__.__name__
+
+        for key, value in obj_dict.items():
+            if key in ["created_at", "updated_at"]:
+                obj_dict[key] = value.isoformat()
+
         return obj_dict
+
