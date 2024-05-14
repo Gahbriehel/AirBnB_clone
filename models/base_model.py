@@ -7,50 +7,48 @@ class BaseModel:
     """
     This defines all common attributes or methods for other classes
     """
+
     def __init__(self, *args, **kwargs):
         """
-        Base Model Instructor
+        Base Model Constructor
         """
         # self.id = str(uuid4())
         # self.created_at = datetime.now()
         # self.updated_at = datetime.now()
-
-	if kwargs:
-		for key, value in kwargs.items():
-			if key in ["created_at", "updated_at"]:
-				setattr(self, key, value.fromisoformat())
-			elif key is not "__class__":
-				setattr(self, key, value)
-	else:
-		self.id = str(uuid4())
-		self.created_at = datetime.now()
-		self.updated_at = datetime.now()
-
-	# dict = {class: 12, updated_at: 1, created_at: 4, name: "Pool", number: 12238}
+        if kwargs:
+            for key, value in kwargs.items():
+                if key in ["created_at", "updated_at"]:
+                    setattr(self, key, value.fromisoformat())
+                elif key != "__class__":
+                    setattr(self, key, value)
+        else:
+            self.id = str(uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
 
     def __str__(self):
         """
         String format for BaseModel
         """
-
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
         """
-        Updates the public instance attribute updated_at with the current datetime
+        Updates the public instance attribute updated_at
+        with the current datetime
         """
         self.updated_at = datetime.now()
 
     def to_dict(self):
         """
-        Returns a dictionary containing all keys/values of __dict__ of the instance
+        Returns a dictionary containing all keys/values of __dict__
+        of the instance
         """
         obj_dict = self.__dict__.copy()
-        obj_dict['__class__'] = self.__class__.__name__
+        obj_dict["__class__"] = self.__class__.__name__
 
         for key, value in obj_dict.items():
             if key in ["created_at", "updated_at"]:
                 obj_dict[key] = value.isoformat()
 
         return obj_dict
-
