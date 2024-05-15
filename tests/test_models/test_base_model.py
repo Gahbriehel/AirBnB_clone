@@ -20,3 +20,21 @@ class Test_BaseModel(unittest.TestCase):
         self.assertTrue(hasattr(self.obj_1, "created_at"))
         self.assertTrue(hasattr(self.obj_1, "updated_at"))
         self.assertFalse(hasattr(self.obj_1, "kwargs"))
+
+    def test_obj_types(self):
+        """Tests for the data types of attributes"""
+        self.assertIsInstance(self.obj_1.id, str)
+        self.assertIsInstance(self.obj_1.created_at, datetime)
+        self.assertIsInstance(self.obj_2.updated_at, datetime)
+
+    def test_save_updates_updated_at(self):
+        """Test for the save method"""
+        old_updated_at = self.obj_1.updated_at
+        self.obj_1.save()
+        new_updated_at = self.obj_1.updated_at
+
+        self.assertNotEqual(old_updated_at, new_updated_at)
+
+
+if __name__ == '__main__':
+    unittest.main()
