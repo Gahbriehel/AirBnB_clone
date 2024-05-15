@@ -35,6 +35,25 @@ class Test_BaseModel(unittest.TestCase):
 
         self.assertNotEqual(old_updated_at, new_updated_at)
 
+    def test_to_dict_returns_dict(self):
+        obj_dict = self.obj_1.to_dict()
+
+        self.assertIsInstance(obj_dict, dict)
+
+        for key, value in self.obj_1.__dict__.items():
+            if isinstance(value, datetime):
+                value = value.isoformat()
+            self.assertIn(key, obj_dict)
+            self.assertEqual(obj_dict[key], value)
+
+        self.assertIn("__class__", obj_dict)
+        self.assertEqual(obj_dict["__class__"], "BaseModel")
+
+        self.assertIn("created_at", obj_dict)
+        self.assertIn("updated_at", obj_dict)
+        self.assertIsInstance(obj_dict["created_at"], str)
+        self.assertIsInstance(obj_dict["updated_at"], str)
+
 
 if __name__ == '__main__':
     unittest.main()
