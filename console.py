@@ -23,8 +23,7 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_quit(self, line):
-        """End of File
-        Use: Ctrl + d
+        """Quit command to exit the program
         """
         return True
 
