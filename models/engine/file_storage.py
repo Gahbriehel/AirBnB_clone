@@ -52,7 +52,7 @@ class FileStorage:
                 try:
                     new_obj = json.load(file)
                     for key, value in new_obj.items():
-                        new_dict[key] = BaseModel(value)
+                        new_dict[key] = value
                 except json.JSONDecodeError:
                     pass
 
