@@ -27,15 +27,19 @@ class FileStorage:
         sets in __objects the obj with key <obj class name>.id
         """
         key = type(obj).__name__ + "." + obj.id
-        value = obj.to_dict()
-        FileStorage.__objects[key] = value
+        FileStorage.__objects[key] = obj
 
     def save(self):
         """
         serializes __objects to the JSON file (path: __file_path)
         """
         with open(FileStorage.__file_path, mode="w", encoding="UTF-8") as my_file:
-            json.dump(FileStorage.__objects, my_file, indent=4, sort_keys=True)
+            new_dict = {}
+            for key, value in FileStorage.__objects.items():
+                new_value = value.to_dict()
+                new_dict[key] = new_value
+
+            json.dump(new_dict, my_file, indent=4, sort_keys=True)
 
     def reload(self):
         """
@@ -52,7 +56,7 @@ class FileStorage:
                 try:
                     new_obj = json.load(file)
                     for key, value in new_obj.items():
-                        new_dict[key] = value
+                        new_dict[key] = BaseModel(value)
                 except json.JSONDecodeError:
                     pass
 
