@@ -42,6 +42,8 @@ class FileStorage:
         deserializes the JSON file to __objects (only if the JSON file (__file_path) exists
         + otherwise, do nothing. If the file doesn’t exist, no exception should be raised)
         """
+
+        from models.base_model import BaseModel
         file_name = FileStorage.__file_path
         new_dict = {}
 
@@ -50,7 +52,7 @@ class FileStorage:
                 try:
                     new_obj = json.load(file)
                     for key, value in new_obj.items():
-                        new_dict[key] = value
+                        new_dict[key] = BaseModel(value)
                 except json.JSONDecodeError:
                     pass
 

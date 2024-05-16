@@ -1,26 +1,2 @@
 {
-    "BaseModel.774cbcf8-d86f-4844-a9d5-e411d40f59ef": {
-        "__class__": "BaseModel",
-        "created_at": "2024-05-16T16:23:48.054774",
-        "id": "774cbcf8-d86f-4844-a9d5-e411d40f59ef",
-        "my_number": 89,
-        "name": "My_First_Model",
-        "updated_at": "2024-05-16T16:23:48.054933"
-    },
-    "BaseModel.8d9907f4-4e0d-4085-a2f4-8bc381ad1445": {
-        "__class__": "BaseModel",
-        "created_at": "2024-05-16T16:24:35.013723",
-        "id": "8d9907f4-4e0d-4085-a2f4-8bc381ad1445",
-        "my_number": 89,
-        "name": "My_First_Model",
-        "updated_at": "2024-05-16T16:24:35.014766"
-    },
-    "BaseModel.bf099930-df98-4029-8214-a1e7999f44d7": {
-        "__class__": "BaseModel",
-        "created_at": "2024-05-16T16:24:44.023894",
-        "id": "bf099930-df98-4029-8214-a1e7999f44d7",
-        "my_number": 89,
-        "name": "My_First_Model",
-        "updated_at": "2024-05-16T16:24:44.024028"
-    }
-}
+    "BaseModel.774cbcf8-d86f-4844-a9d5-e411d40f59ef": 
