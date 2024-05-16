@@ -4,12 +4,12 @@ import os
 
 
 class HBNBCommand(cmd.Cmd):
-    """Simple command processor example."""
+    """ Simple command processor example. """
     prompt = '(hbnb) '
     last_output = ''
 
     def do_shell(self, line):
-        """Run a shell command"""
+        """ Run a shell command """
         print("running shell command:", line)
         output = os.popen(line).read()
         print(output)
@@ -17,14 +17,11 @@ class HBNBCommand(cmd.Cmd):
 
 
     def do_EOF(self, line):
-        """
-        End of File: Ctrl + d
-        """
+        """ End of File command: Ctrl + d """
         return True
 
     def do_quit(self, line):
-        """Quit command to exit the program
-        """
+        """ Quit command to exit the program """
         return True
 
     def emptyline(self):
