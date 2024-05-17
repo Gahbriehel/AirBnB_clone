@@ -3,3 +3,9 @@ Airbnb - tests - test-models - [test_base_model.py]
 
 Airbnb - models - engine - [file_storage.py]
 Airbnb - tests - test-models - [test_file_storage.py]
+
+
+python3 -m unittest tests/test_models/test_base_model.py
+python3 -m unittest tests/test_models/test_engine/test_file_storage.py
+
+
