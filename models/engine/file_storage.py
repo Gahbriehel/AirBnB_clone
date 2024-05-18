@@ -13,6 +13,7 @@ class FileStorage:
 
     __file_path = "file.json"
     __objects = {}
+    # __class_list = ["BaseModel", "User"]
 
     def __init__(self):
         pass
@@ -52,6 +53,7 @@ class FileStorage:
         """
 
         from models.base_model import BaseModel
+        from models.user import User
 
         file_name = FileStorage.__file_path
         new_dict = {}
@@ -61,7 +63,10 @@ class FileStorage:
                 try:
                     new_obj = json.load(file)
                     for key, value in new_obj.items():
-                        new_dict[key] = BaseModel(**value)
+                        if value["__class__"] == "BaseModel":
+                            new_dict[key] = BaseModel(**value)
+                        elif value["__class__"] == "User":
+                            new_dict[key] = User(**value)
                 except json.JSONDecodeError:
                     pass
 

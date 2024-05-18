@@ -4,6 +4,7 @@ import cmd
 import os
 import json
 from models.base_model import BaseModel
+from models.user import User
 from models import storage
 
 
@@ -13,7 +14,10 @@ class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
     last_output = ""
 
-    __class_list = ["BaseModel"]
+    __class_list = [
+            "BaseModel", "User",
+            "Place", "State",
+            "City", "Amenity", "Review"]
 
     def do_shell(self, line):
         """Run a shell command"""
@@ -45,7 +49,11 @@ class HBNBCommand(cmd.Cmd):
         elif line not in HBNBCommand.__class_list:
             print("** class doesn't exist **")
         else:
-            base_instance = BaseModel()
+            if line == "BaseModel":
+                base_instance = BaseModel()
+            elif line == "User":
+                base_instance = User()
+            # elif line
             base_instance.save()
             print(base_instance.id)
 
@@ -90,7 +98,7 @@ class HBNBCommand(cmd.Cmd):
                 found_instance = False
                 for key, value in obj_storage.items():
                     obj_dict = value.to_dict()
-                    if line_list[1] == obj_dict['id']:
+                    if line_list[1] == obj_dict["id"]:
                         found_instance = True
                         continue
                     else:
@@ -139,11 +147,11 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
         else:
             line_list = line.split(" ")
-            
+
             for key, value in obj_storage.items():
                 obj_dict = value.to_dict()
-                obj_ids.append(obj_dict['id'])
-            
+                obj_ids.append(obj_dict["id"])
+
             if line_list[0] not in HBNBCommand.__class_list:
                 print("** class doesn't exist **")
             elif len(line_list) < 2:
@@ -155,11 +163,10 @@ class HBNBCommand(cmd.Cmd):
             elif len(line_list) < 4:
                 print("** value missing **")
             else:
-
                 for key, value in obj_storage.items():
                     obj_dict = value.to_dict()
 
-                    if obj_dict['id'] == line_list[1]:
+                    if obj_dict["id"] == line_list[1]:
                         obj_dict[line_list[2]] = f"{line_list[3]}"
                     obj_rep[key] = obj_dict
                 with open("file.json", mode="w", encoding="utf-8") as file:
