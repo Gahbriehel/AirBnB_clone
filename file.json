@@ -22,5 +22,11 @@
         "my_number": 89,
         "name": "My_First_Model",
         "updated_at": "2024-05-18T13:05:04.475993"
+    },
+    "BaseModel.eda04303-e082-4b2e-bdec-6ed91081f510": {
+        "__class__": "BaseModel",
+        "created_at": "2024-05-18T13:07:41.135062",
+        "id": "eda04303-e082-4b2e-bdec-6ed91081f510",
+        "updated_at": "2024-05-18T13:07:41.135155"
     }
 }

@@ -22,10 +22,12 @@ class HBNBCommand(cmd.Cmd):
 
     def do_EOF(self, line):
         """ End of File command: Ctrl + d """
+        print()
         return True
 
     def do_quit(self, line):
         """ Quit command to exit the program """
+        print()
         return True
 
     def emptyline(self):
