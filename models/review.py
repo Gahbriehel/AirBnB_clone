@@ -13,9 +13,3 @@ class Review(BaseModel):
     place_id = ""
     user_id = ""
     text = ""
-
-    def __init__(self, *arg, **kwargs):
-        """
-        Constructor for the Review Model
-        """
-        super()__init__(**kwargs)
