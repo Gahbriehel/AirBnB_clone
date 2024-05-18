@@ -14,7 +14,10 @@ class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
     last_output = ""
 
-    __class_list = ["BaseModel", "User"]
+    __class_list = [
+            "BaseModel", "User",
+            "Place", "State",
+            "City", "Amenity", "Review"]
 
     def do_shell(self, line):
         """Run a shell command"""
@@ -50,6 +53,7 @@ class HBNBCommand(cmd.Cmd):
                 base_instance = BaseModel()
             elif line == "User":
                 base_instance = User()
+            # elif line
             base_instance.save()
             print(base_instance.id)
 
