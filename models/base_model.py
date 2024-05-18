@@ -15,6 +15,24 @@ class BaseModel:
         Base Model Constructor
         """
 
+        if kwargs:
+            for key, value in kwargs.items():
+                if key in ["created_at", "updated_at"]:
+                    setattr(self, key, datetime.fromisoformat(value))
+                elif key == "__class__":
+                    continue
+                else:
+                    setattr(self, key, value)
+        else:
+            self.id = str(uuid4())
+            self.created_at = datetime.now()
+            storage.new(self)
+
+        """
+        self.id = str(uuid4())
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
+
         BaseModel.__isnewinstance = False
         self.id = None
         self.created_at = None
@@ -38,6 +56,7 @@ class BaseModel:
             self.id = str(uuid4())
             BaseModel.__isnewinstance = True
             storage.new(self)
+        """
 
     def __str__(self):
         """
@@ -51,11 +70,13 @@ class BaseModel:
         with the current datetime
         """
         self.updated_at = datetime.now()
+        storage.save()
 
+        """
         if BaseModel.__isnewinstance is True:
             storage.new(self)
         storage.save()
-
+        """
 
     def to_dict(self):
         """
@@ -70,3 +91,5 @@ class BaseModel:
                 obj_dict[key] = value.isoformat()
 
         return obj_dict
+
+

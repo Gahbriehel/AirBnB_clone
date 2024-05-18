@@ -26,7 +26,7 @@ class FileStorage:
         """
         sets in __objects the obj with key <obj class name>.id
         """
-        key = type(obj).__name__ + "." + obj.id
+        key = type(obj).__name__ + "." + obj.to_dict()['id']
         FileStorage.__objects[key] = obj
 
     def save(self):
@@ -56,8 +56,8 @@ class FileStorage:
                 try:
                     new_obj = json.load(file)
                     for key, value in new_obj.items():
-                        new_dict[key] = BaseModel(value)
+                        new_dict[key] = BaseModel(**value)
                 except json.JSONDecodeError:
                     pass
 
-        FileStorage.__objects = new_dict
+        FileStorage.__objects = new_dict.copy()
