@@ -5,6 +5,7 @@ Place Model for the HBNB Project
 
 from models.base_model import BaseModel
 
+
 class Place(BaseModel):
     """
     Place Model that inherits from the BaseModel

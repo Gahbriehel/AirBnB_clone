@@ -104,7 +104,7 @@ class HBNBCommand(cmd.Cmd):
                     else:
                         obj_rep[key] = obj_dict
 
-                if found_instance == True:
+                if found_instance:
                     with open("file.json", mode="w", encoding="utf-8") as file:
                         json.dump(obj_rep, file, indent=4, sort_keys=True)
                     storage.reload()
