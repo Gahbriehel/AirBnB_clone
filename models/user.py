@@ -15,4 +15,4 @@ class User(BaseModel):
         """
         User Constructor
         """
-        super().__init__(arg, kwargs)
+        super().__init__(**kwargs)
