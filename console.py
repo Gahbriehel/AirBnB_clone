@@ -14,7 +14,7 @@ class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
     last_output = ""
 
-    __class_list = ["BaseModel"]
+    __class_list = ["BaseModel", "User"]
 
     def do_shell(self, line):
         """Run a shell command"""
