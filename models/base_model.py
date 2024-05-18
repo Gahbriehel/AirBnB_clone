@@ -26,37 +26,8 @@ class BaseModel:
         else:
             self.id = str(uuid4())
             self.created_at = datetime.now()
-            storage.new(self)
-
-        """
-        self.id = str(uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
-
-        BaseModel.__isnewinstance = False
-        self.id = None
-        self.created_at = None
-        self.updated_at = None
-
-        if kwargs is not None:
-            for key, value in kwargs.items():
-                if key == "__class__":
-                    continue
-                else:
-                    if key == "created_at" or key == "updated_at":
-                        setattr(self, key, datetime.fromisoformat(value))
-                    else:
-                        setattr(self, key, value)
-
-        if self.created_at is None:
-            self.created_at = datetime.now()
-        if self.updated_at is None:
             self.updated_at = datetime.now()
-        if self.id is None:
-            self.id = str(uuid4())
-            BaseModel.__isnewinstance = True
             storage.new(self)
-        """
 
     def __str__(self):
         """
