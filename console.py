@@ -2,6 +2,7 @@
 """Console for Airbnb"""
 import cmd
 import os
+import json
 from models.base_model import BaseModel
 from models import storage
 
@@ -69,6 +70,38 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
             else:
                 print(obj_ids[line_list[1]])
+
+    def do_destroy(self, line):
+        """
+        Deletes an instance based on the class name
+        E.g: `destroy {id}`
+        """
+        obj_storage = storage.all()
+        if not line:
+            print("** class name missing **")
+        else:
+            line_list = line.split(" ")
+            if line_list[0] not in HBNBCommand.__class_list:
+                print("** class doesn't exist **")
+            elif len(line_list) != 2:
+                print("** instance id missing **")
+            else:
+                obj_rep = {}
+                found_instance = False
+                for key, value in obj_storage.items():
+                    obj_dict = value.to_dict()
+                    if line_list[1] == obj_dict['id']:
+                        found_instance = True
+                        continue
+                    else:
+                        obj_rep[key] = obj_dict
+
+                if found_instance == True:
+                    with open("file.json", mode="w", encoding="utf-8") as file:
+                        json.dump(obj_rep, file, indent=4, sort_keys=True)
+                    storage.reload()
+                else:
+                    print("** no instance found **")
 
 
 if __name__ == "__main__":
