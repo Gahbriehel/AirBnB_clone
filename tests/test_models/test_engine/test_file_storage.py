@@ -16,6 +16,11 @@ class TestFileStorage(unittest.TestCase):
         self.obj_1 = BaseModel()
         self.obj_1.id = "1234"
         self.obj_dict = self.obj_1.to_dict()
+        self.file_path = FileStorage._FileStorage__file_path
+
+    def test_all(self):
+        """ Tests for the all method """
+        self.assertEqual(self.storage.all(), {})
 
     def test_new(self):
         """ Tests for the new method"""
@@ -23,3 +28,27 @@ class TestFileStorage(unittest.TestCase):
         key = "BaseModel.1234"
         self.assertIn(key, self.storage.all())
         self.assertEqual(self.storage.all()[key], self.obj_1)
+
+    def test_save(self):
+        """ Tests for the save method """
+        self.storage.new(self.obj_1)
+        self.storage.save()
+        with open(self.file_path, "r") as file:
+            data = json.load(file)
+        key = "BaseModel.1234"
+        self.assertIn(key, data)
+        self.assertEqual(data[key], self.obj_dict)
+
+    def test_reload(self):
+        """ Tests for the reload method """
+        self.storage.new(self.obj_1)
+        self.storage.save()
+        self.storage._FileStorage__objects = {}
+        self.storage.reload()
+        key = "BaseModel.1234"
+        self.assertIn(key, self.storage.all())
+        self.assertEqual(self.storage.all()[key].to_dict(), self.obj_dict)
+
+
+if __name__ == "__main__":
+    unittest.main()
