@@ -91,5 +91,3 @@ class BaseModel:
                 obj_dict[key] = value.isoformat()
 
         return obj_dict
-
-
