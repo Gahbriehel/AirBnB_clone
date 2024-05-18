@@ -103,6 +103,33 @@ class HBNBCommand(cmd.Cmd):
                 else:
                     print("** no instance found **")
 
+    def do_all(self, line):
+        """
+        Prints all string rep of all instance or
+        of a specific instance
+        E.G: `all` or `all {modelName}`
+        """
+
+        obj_storage = storage.all()
+        obj_lists = []
+        if not line:
+            for value in obj_storage.values():
+                obj_lists.append(str(value))
+            print(obj_lists)
+        else:
+            line_list = line.split(" ")
+
+            if line_list[0] not in HBNBCommand.__class_list:
+                print("** class doesn't exist **")
+            else:
+                for value in obj_storage.values():
+                    obj_dict = value.to_dict()
+                    if obj_dict["__class__"] == line_list[0]:
+                        obj_lists.append(str(value))
+                print(obj_lists)
+
+
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
