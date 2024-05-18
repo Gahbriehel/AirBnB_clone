@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""Console for Airbnb"""
 import cmd
 import os
 from models.base_model import BaseModel
