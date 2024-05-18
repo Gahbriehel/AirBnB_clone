@@ -6,27 +6,27 @@ from models import storage
 
 
 class HBNBCommand(cmd.Cmd):
-    """ Simple command processor example. """
-    prompt = '(hbnb) '
-    last_output = ''
+    """Simple command processor example."""
+
+    prompt = "(hbnb) "
+    last_output = ""
 
     __class_list = ["BaseModel"]
 
     def do_shell(self, line):
-        """ Run a shell command """
+        """Run a shell command"""
         print("running shell command:", line)
         output = os.popen(line).read()
         print(output)
         self.last_output = output
 
-
     def do_EOF(self, line):
-        """ End of File command: Ctrl + d """
+        """End of File command: Ctrl + d"""
         print()
         return True
 
     def do_quit(self, line):
-        """ Quit command to exit the program """
+        """Quit command to exit the program"""
         print()
         return True
 
@@ -35,7 +35,7 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, line):
-        """ Creates a new instance of BaseModel
+        """Creates a new instance of BaseModel
         + saves it (to the JSON file) and prints the id
         """
         if not line:
@@ -48,16 +48,17 @@ class HBNBCommand(cmd.Cmd):
             print(base_instance.id)
 
     def do_show(self, line):
-        """ Prints the string representation of an instance based on the class name and id """
+        """Prints the string representation of an
+        instance based on the class name and id"""
         obj_storage = storage.all()
         if not line:
             print("** class name missing **")
         else:
-            line_list = line.split(' ')
+            line_list = line.split(" ")
             obj_ids = {}
             for value in obj_storage.values():
                 obj_tem = value.to_dict()
-                key = obj_tem['id']
+                key = obj_tem["id"]
                 obj_ids[key] = value
             if line_list[0] not in HBNBCommand.__class_list:
                 print("** class doesn't exist **")
@@ -69,6 +70,5 @@ class HBNBCommand(cmd.Cmd):
                 print(obj_ids[line_list[1]])
 
 
-    
-if __name__ == '__main__':
+if __name__ == "__main__":
     HBNBCommand().cmdloop()
