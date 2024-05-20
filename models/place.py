@@ -25,4 +25,4 @@ class Place(BaseModel):
 
     def __init__(self, *args, **kwargs):
         """Place Constructor"""
-        pass
+        super().__init__(**kwargs)
