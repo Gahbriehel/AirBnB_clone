@@ -11,3 +11,7 @@ class Amenity(BaseModel):
     Amenity Model that inherits from the BaseModel
     """
     name = ""
+
+    def __init__(self, *args, **kwargs):
+        """Amenity Constructor"""
+        pass
