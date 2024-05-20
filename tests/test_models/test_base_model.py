@@ -39,7 +39,9 @@ class Test_BaseModel(unittest.TestCase):
         self.assertFalse(hasattr(self.obj_1, "updated_at"))
         self.obj_1.save()
         self.assertTrue(hasattr(self.obj_1, "updated_at"))
-        self.assertIsInstance(self.obj_1.updated_at, datetime)
+        new_updated_at = self.obj_1.updated_at
+        self.assertIsInstance(new_updated_at, datetime)
+        self.assertAlmostEqual(new_updated_at.timestamp(), datetime.now().timestamp(), delta=1)
 
     def test_to_dict_returns_dict(self):
         """Test for to_dict method"""
