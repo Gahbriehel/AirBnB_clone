@@ -34,7 +34,7 @@ class Test_BaseModel(unittest.TestCase):
         expected_str = f"[BaseModel] ({self.obj_1.id}) {self.obj_1.__dict__}"
         self.assertEqual(str(self.obj_1), expected_str)
 
-    def test_save_updates_updated_at(self):
+    def test_save(self):
         """Test for the save method"""
         self.assertFalse(hasattr(self.obj_1, "updated_at"))
         self.obj_1.save()

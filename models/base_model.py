@@ -43,12 +43,6 @@ class BaseModel:
         self.updated_at = datetime.now()
         storage.save()
 
-        """
-        if BaseModel.__isnewinstance is True:
-            storage.new(self)
-        storage.save()
-        """
-
     def to_dict(self):
         """
         Returns a dictionary containing all keys/values of __dict__
