@@ -14,4 +14,4 @@ class Amenity(BaseModel):
 
     def __init__(self, *args, **kwargs):
         """Amenity Constructor"""
-        super().__int__()
+        pass
