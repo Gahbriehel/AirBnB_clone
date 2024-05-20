@@ -29,6 +29,11 @@ class Test_BaseModel(unittest.TestCase):
         self.assertIsInstance(self.obj_2.id, str)
         self.assertIsInstance(self.obj_2.created_at, datetime)
 
+    def test__str__(self):
+        """ Test for the __str__ method """
+        expected_str = f"[BaseModel] ({self.obj_1.id}) {self.obj_1.__dict__}"
+        self.assertEqual(str(self.obj_1), expected_str)
+
     def test_save_updates_updated_at(self):
         """Test for the save method"""
         self.assertFalse(hasattr(self.obj_1, "updated_at"))
