@@ -15,4 +15,4 @@ class City(BaseModel):
 
     def __init__(self, *args, **kwargs):
         """City Constructor"""
-        super().__init__(**kwargs)
+        pass

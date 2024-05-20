@@ -17,4 +17,4 @@ class Review(BaseModel):
 
     def __init__(self, *args, **kwargs):
         """Review Constructors"""
-        super().__init__(**kwargs)
+        pass

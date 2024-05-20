@@ -14,4 +14,4 @@ class State(BaseModel):
 
     def __init__(self, *args, **kwargs):
         """State Constructor"""
-        super().__init__(**kwargs)
+        pass
