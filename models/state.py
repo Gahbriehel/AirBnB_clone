@@ -11,3 +11,7 @@ class State(BaseModel):
     State Model that inherits from the BaseModel
     """
     name = ""
+
+    def __init__(self, *args, **kwargs):
+        """State Constructor"""
+        super().__init__(**kwargs)
