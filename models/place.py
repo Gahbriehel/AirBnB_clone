@@ -22,7 +22,3 @@ class Place(BaseModel):
     latitude = float(0)
     longitude = float(0)
     amenity_ids = []
-
-    def __init__(self, *args, **kwargs):
-        """Place Constructor"""
-        pass
