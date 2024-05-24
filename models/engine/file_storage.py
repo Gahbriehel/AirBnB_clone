@@ -51,9 +51,23 @@ class FileStorage:
         + otherwise, do nothing. If the file doesn’t exist,
         no exception should be raised)
         """
-
         from models.base_model import BaseModel
         from models.user import User
+        from models.place import Place
+        from models.state import State
+        from models.city import City
+        from models.amenity import Amenity
+        from models.review import Review
+
+        class_list = {
+            "BaseModel": BaseModel,
+            "User": User,
+            "Place": Place,
+            "State": State,
+            "City": City,
+            "Amenity": Amenity,
+            "Review": Review,
+        }
 
         file_name = FileStorage.__file_path
         new_dict = {}
@@ -63,10 +77,8 @@ class FileStorage:
                 try:
                     new_obj = json.load(file)
                     for key, value in new_obj.items():
-                        if value["__class__"] == "BaseModel":
-                            new_dict[key] = BaseModel(**value)
-                        elif value["__class__"] == "User":
-                            new_dict[key] = User(**value)
+                        class_model = class_list[value["__class__"]]
+                        new_dict[key] = class_model(**value)
                 except json.JSONDecodeError:
                     pass
 

@@ -5,6 +5,11 @@ import os
 import json
 from models.base_model import BaseModel
 from models.user import User
+from models.place import Place
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.review import Review
 from models import storage
 
 
@@ -13,11 +18,24 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = "(hbnb) "
     last_output = ""
-
     __class_list = [
-            "BaseModel", "User",
-            "Place", "State",
-            "City", "Amenity", "Review"]
+            "BaseModel",
+            "User",
+            "Place",
+            "State",
+            "City",
+            "Amenity",
+            "Review"
+        ]
+    class_dict = {
+            "BaseModel": BaseModel,
+            "User": User,
+            "Place": Place,
+            "State": State,
+            "City": City,
+            "Amenity": Amenity,
+            "Review": Review
+        }
 
     def do_EOF(self, line):
         """End of File command: Ctrl + d"""
@@ -42,10 +60,13 @@ class HBNBCommand(cmd.Cmd):
         elif line not in HBNBCommand.__class_list:
             print("** class doesn't exist **")
         else:
+            base_instance = HBNBCommand.class_dict[line]()
+            """
             if line == "BaseModel":
                 base_instance = BaseModel()
             elif line == "User":
                 base_instance = User()
+            """
             # elif line
             base_instance.save()
             print(base_instance.id)
