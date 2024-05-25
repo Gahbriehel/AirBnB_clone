@@ -1,0 +1,41 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  color: #484848;
+  font-size: 14px;
+  font-family: Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.container {
+  max-width: 1000px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 30px auto;
+}
+
+.filters button {
+  font-size: 18px;
+  background-color: #ff5a5f;
+  color: #ffffff;
+  height: 48px;
+  width: 20%;
+  border: None;
+  border-radius: 4px;
+  position: absolute;
+  right: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.filters button:hover {
+  opacity: 90%;
+}
