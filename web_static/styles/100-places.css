@@ -1,0 +1,51 @@
+.amenities2 {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.amenities2 h2 {
+  font-size: 16px;
+  border-bottom: 1px solid #dddddd;
+  text-align: left;
+}
+
+.lists {
+  display: flex;
+  flex-direction: wrap;
+  align-items: center;
+  width: 100%;
+}
+
+.lists h4 {
+  font-size: 16px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.amenities2 input[type="image"] {
+  width: 20px;
+  height: 20px;
+}
+
+.reviews {
+  margin-top: -15px;
+  width: 100%;
+}
+
+.reviews h2 {
+  font-size: 16px;
+  border-bottom: 1px solid #dddddd;
+  text-align: left;
+}
+
+.reviews101 h3 {
+  font-size: 14px;
+  text-align: left;
+  /* margin-top: 15px; */
+}
+
+.reviews101 p {
+  font-size: 12px;
+  text-align: left;
+  margin-top: -15px;
+}
