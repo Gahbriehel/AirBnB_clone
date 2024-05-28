@@ -1,0 +1,145 @@
+/* Media Query for devices with a max width of 768px (tablets) */
+@media (max-width: 768px) {
+  .container {
+    width: 90%;
+    margin: 20px auto;
+  }
+
+  .filters {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+
+  .filters button {
+    width: 100px;
+    height: 100px;
+    position: static;
+    margin-top: 10px;
+  }
+
+  .locations,
+  .amenities {
+    width: 100%;
+    border-right: none;
+  }
+
+  .locations h3,
+  .amenities h3,
+  .locations h4,
+  .amenities h4 {
+    margin-left: 0;
+    text-align: center;
+    font-size: 20px;
+  }
+
+  .places {
+    font-size: 24px;
+    margin: 20px auto;
+    text-align: center;
+  }
+
+  article {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+  }
+
+  .heading_price {
+    flex-direction: column;
+  }
+
+  .price_by_night {
+    margin: 10px 0;
+    width: 70px;
+  }
+
+  .information {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .information div {
+    margin: 10px 0;
+  }
+
+  .max_guest h4,
+  .number_rooms h4,
+  .number_bathrooms h4 {
+    font-size: 20px;
+    font-weight: 50px;
+  }
+  .amenities2 h2 {
+    font-size: 30px;
+  }
+
+  .lists h4 {
+    font-size: 20px;
+    font-weight: normal;
+  }
+
+  .reviews h2 {
+    font-size: 25px;
+  }
+
+  .reviews101 h3,
+  .reviews101 p {
+    font-size: 20px;
+  }
+}
+
+/* Media Query for devices with a max width of 480px (mobile devices) */
+@media (max-width: 480px) {
+  .filters {
+    padding: 5px;
+  }
+
+  .filters button {
+    font-size: 16px;
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+  }
+
+  .places h1 {
+    font-size: 24px;
+    margin-left: 0;
+  }
+
+  .places article {
+    width: auto;
+  }
+
+  article h2 {
+    font-size: 24px;
+  }
+
+  .price_by_night {
+    height: 40px;
+    width: 40px;
+    font-size: 20px;
+  }
+
+  .information {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .max_guest,
+  .number_rooms,
+  .number_bathrooms h4 {
+    font-size: 14px;
+  }
+
+  .information input[type="image"] {
+    width: 30px;
+    height: 30px;
+  }
+
+  .user h4,
+  .description h4,
+  .amenities2 h2,
+  .reviews h2 {
+    font-size: 14px;
+  }
+}
